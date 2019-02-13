@@ -70,6 +70,9 @@
     <Compile Include="Assets\Scripts\Snake.cs" />
     <Compile Include="Assets\Scripts\Tentacle.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
+    <Compile Include="Assets\Scripts\VerticalPlatform.cs" />
+    <None Include="Assets\Shaders\Sprites-PixelArt.shader" />
+    <None Include="Assets\Medieval_pixel_art_asset_FREE\pixel_snapping_README.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/pokem/Documents/Unity Projects/2D Adventure/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

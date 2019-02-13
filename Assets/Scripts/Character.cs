@@ -63,6 +63,7 @@ public class Character : Unit
         if (isGrounded) State = CharState.Run;
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
+        //rigidbody.velocity = new Vector2(direction.x * speed ,rigidbody.velocity.y);
         sprite.flipX = direction.x < 0.1F;
         
     }
@@ -109,6 +110,7 @@ public class Character : Unit
     public override void ReceiveDamage()
     {
         Lives--;
+        StartCoroutine(Hit());
         //rigidbody.AddForce(transform.up * dropping + (sprite.flipX ? transform.right * dropping/4 : -transform.right * dropping/4), ForceMode2D.Impulse);
         Debug.Log(lives);
     }
@@ -146,7 +148,6 @@ public class Character : Unit
         Bullet bullet = collider.GetComponent<Bullet>();
         if (bullet && gameObject != bullet.Parent)
             ReceiveDamage();
-        StartCoroutine(Hit());
     }
 
     // Update is called once per frame
@@ -209,7 +210,7 @@ public class Character : Unit
             }
             else
                 isShootable = true;
-            if (isGrounded && Input.GetButtonDown("Jump"))
+            if (isGrounded && Input.GetButtonDown("Jump") && !Input.GetButton("Vertical"))
                 Jump();
         }
         

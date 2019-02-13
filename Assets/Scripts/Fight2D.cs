@@ -29,7 +29,7 @@ public class Fight2D : MonoBehaviour
     // layerMask - номер слоя, с которым будет взаимодействие
     // damage - наносимый урон
     // allTargets - должны-ли получить урон все цели, попавшие в зону поражения
-    public static void Action(Vector2 point, float radius, int layerMask, float damage, bool allTargets)
+    public static void Action(Vector2 point, float radius, int layerMask, bool allTargets)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(point, radius, 1 << layerMask);
 
@@ -50,7 +50,7 @@ public class Fight2D : MonoBehaviour
         {
             if (hit.GetComponent<Unit>())
             {
-                hit.GetComponent<Unit>().HP -= damage;
+                hit.GetComponent<Unit>().ReceiveDamage();
             }
         }
     }
